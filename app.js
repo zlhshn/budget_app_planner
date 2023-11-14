@@ -54,7 +54,7 @@ window.addEventListener('load',()=>{
     incomes= Number(localStorage.getItem('incomes')) || 0
     incomeNum.textContent = incomes
     dateInput.valueAsDate = new Date()
-    expenseList = JSON.parse(localStorage.getItem('expensess')) || []
+    expenseList = JSON.parse(localStorage.getItem('expenses')) || []
 
     expenseList.forEach((x)=>writeDom(x))
     calculateResult()
@@ -98,6 +98,8 @@ const writeDom = ({id,amount,time,expense}) =>{
         return td
     }
 
+
+    // !create tbody elemet and get table element
     const createLastTd = ()=>{
 
         const td = document.createElement('td')
@@ -132,6 +134,7 @@ const writeDom = ({id,amount,time,expense}) =>{
 }
 
 
+// ! calculate all result
 const calculateResult = ()=>{
 
     incomeNum.textContent = new Intl.NumberFormat().format(incomes)
@@ -149,16 +152,58 @@ const calculateResult = ()=>{
 }
 
 
+// ! delete table tr
+
 tbody.addEventListener('click',(e)=>{
 
     if (e.target.classList.contains("fa-trash-can")) {
         e.target.parentElement.parentElement.remove()
+
+        const id = e.target.id
+        expenseList= expenseList.filter((x => x.id != id))
+    
+        localStorage.setItem("expenses", JSON.stringify(expenseList))
+     calculateResult()
+
+    } else if(e.target.classList.contains('fa-pen-to-square')){
+       const id = e.target.id
+       const expenseToEdit = expenseList.find((x) => x.id == id);
+
+
+        dateInput.value = expenseToEdit.time;
+        expenseInput.value = expenseToEdit.expense;
+        amountInput.value = expenseToEdit.amount;
+    
+        expenseList = expenseList.filter((x) => x.id != id);
+        localStorage.setItem("expenses", JSON.stringify(expenseList));
+
+      
+        calculateResult();
+
     }
 
 
-    const id = e.target.id
-    expenseList= harcamaListesi.filter((harcama => harcama.id != id))
+   
+})
 
 
+
+
+
+
+
+
+// ! reset all data
+
+resetBtn.addEventListener('click',()=>{
+ if(confirm('Are you sure you want to clear all data?')){
+
+    expenseList = []
+    incomes = 0
+    localStorage.removeItem('expenses')
+    localStorage.removeItem('incomes')
+    tbody.textContent = ''
+    calculateResult()
+ }
 
 })
