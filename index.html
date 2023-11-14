@@ -4,6 +4,13 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Budget App</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+      integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
   </head>
   <body>
@@ -23,48 +30,43 @@
                <p id="expense">0</p>
             </div>
             <div class="col h4 px-3   pt-4  border border-1 border-danger rounded-4 text-danger  bg-danger-subtle">
-               <p>Remaining :</p> 
+               <p id="remainText">Remaining :</p> 
                <p id="remaining">0</p>
             </div>
 
         </section>
 
-       <section class="row">
+       <section class="row d-flex f">
     
 
         <article class="col-5">
 
 
 
-          <form id="incomeForm"  class="d-flex flex-column gap-4" action="">
+          <form id="incomeForm"  class="d-flex flex-column gap-4 border border-primary p-3 rounded-4" action="">
   
-            <label for="">Your İncome</label>
-            <input type="number">
-            <button class="">ADD</button>
+            <label for=""  class="fs-5 text-primary">Your İncome</label>
+            <input id="incomeInput" type="number" class="border border-primary">
+            <button id="add" class=" border-0 bg-info-subtle rounded-5 w-50 text-primary fw-bold" >ADD</button>
         </form>
 
-          <form id="inputForm" class=" d-flex flex-column gap-3 "  action="
+          <form id="inputForm" class=" mt-5 d-flex flex-column gap-3  border border-warning  p-3 rounded-4"  action="
           ">
             
-          <label for="">Date</label>
-          <input type="date" name="" id="">
-          <label for="">Expense</label>
-          <input type="text">
-          <label for="">Amount</label>
-          <input type="number">
-          <button>Submit</button>
+          <label id="dateInput"  for="" class="fs-5 text-warning">Date</label>
+          <input type="date" name="" id="" class="border border-warning text-warning-emphasis">
+          <label for="" class="fs-5 text-warning">Expense</label>
+          <input id="expenseInput" type="text" class="border border-warning">
+          <label for="" class="fs-5 text-warning">Amount</label>
+          <input id="amountInput" type="number" class="border border-warning">
+          <button class=" border-0 bg-warning-subtle rounded-5 w-50 text-warning fw-bold">Submit</button>
       </form>
-  
-  
-     
-
-
-        </article>
+  </article>
 
 
 
-        
-    <table class="table-bordered mt-3 col-7 d-flex ">
+        <article class="col-7">
+    <table class="table table-bordered text-center">
 
       <thead>
           <tr>
@@ -75,11 +77,19 @@
 
           </tr>
       </thead>
+
+      <tbody id="expenseBody">
+
+      </tbody>
   </table>
     
-      
+      </article>
     
     </section>
+
+    <div class="text-center">
+      <button id="reset" class="btn btn-danger mt-5 px-5 fw-bold">Reset</button>
+    </div>
 
 
 
@@ -97,6 +107,8 @@
 
 
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+    <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script> -->
+
+    <script src="app.js"></script>
   </body>
 </html>
