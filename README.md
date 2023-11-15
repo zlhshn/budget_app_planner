@@ -7,7 +7,7 @@
 This project aims to create an app where users can plan their budgets.
 
 ## Project Live
-[Budget_app]()
+[Budget_app](https://zlhshn.github.io/budget_app_planner/)
 
 ## How to use the app
 💰 You can list your expenses in the table by date and expense name.<br>
