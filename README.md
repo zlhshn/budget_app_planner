@@ -17,7 +17,7 @@ This project aims to create an app where users can plan their budgets.
 💰 All information can be reset if desired.<br>
 
 ## How does the project look?
-![Budget_app]()
+![Budget_app](./img/budget.gif)
 
 ## Built With
 - HTML5
