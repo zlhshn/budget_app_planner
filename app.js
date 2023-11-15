@@ -66,11 +66,13 @@ window.addEventListener('load',()=>{
 inputForm.addEventListener('submit',(e)=>{
 
     e.preventDefault()
+   
+   
 
     const newExpense = {
 
         id: new Date().getTime(),
-        time: new Date(dateInput.value).toLocaleDateString(),
+        time: new Date(dateInput.value).toLocaleDateString(tr),
         expense: expenseInput.value,
         amount: amountInput.value
     }
@@ -167,12 +169,13 @@ tbody.addEventListener('click',(e)=>{
 
     } else if(e.target.classList.contains('fa-pen-to-square')){
        const id = e.target.id
-       const expenseToEdit = expenseList.find((x) => x.id == id);
+       const expenseEdit = expenseList.find((x) => x.id == id);
+       console.log(expenseEdit);
 
 
-        dateInput.value = expenseToEdit.time;
-        expenseInput.value = expenseToEdit.expense;
-        amountInput.value = expenseToEdit.amount;
+        dateInput.value = expenseEdit.time;
+        expenseInput.value = expenseEdit.expense;
+        amountInput.value = expenseEdit.amount;
     
         expenseList = expenseList.filter((x) => x.id != id);
         localStorage.setItem("expenses", JSON.stringify(expenseList));
@@ -207,3 +210,5 @@ resetBtn.addEventListener('click',()=>{
  }
 
 })
+
+
