@@ -174,10 +174,11 @@ tbody.addEventListener('click',(e)=>{
 
 
       
-    //    const expenseEditDate = new Date(expenseEdit.time);
-    //    const formattedDate = expenseEditDate.toISOString().split('T')[0];
+       const expenseEditDate = new Date(expenseEdit.time);
+       expenseEditDate.setDate(expenseEditDate.getDate() + 1);
+       const formattedDate = expenseEditDate.toISOString().split('T')[0];
 
-       dateInput.value = expenseEdit.time;
+       dateInput.value = formattedDate;
         expenseInput.value = expenseEdit.expense;
         amountInput.value = expenseEdit.amount;
     
