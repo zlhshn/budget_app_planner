@@ -72,7 +72,7 @@ inputForm.addEventListener('submit',(e)=>{
     const newExpense = {
 
         id: new Date().getTime(),
-        time: new Date(dateInput.value).toLocaleDateString(tr),
+        time: new Date(dateInput.value).toLocaleDateString(),
         expense: expenseInput.value,
         amount: amountInput.value
     }
@@ -173,15 +173,18 @@ tbody.addEventListener('click',(e)=>{
        console.log(expenseEdit);
 
 
-        dateInput.value = expenseEdit.time;
+      
+    //    const expenseEditDate = new Date(expenseEdit.time);
+    //    const formattedDate = expenseEditDate.toISOString().split('T')[0];
+
+       dateInput.value = expenseEdit.time;
         expenseInput.value = expenseEdit.expense;
         amountInput.value = expenseEdit.amount;
     
         expenseList = expenseList.filter((x) => x.id != id);
         localStorage.setItem("expenses", JSON.stringify(expenseList));
-
-      
         calculateResult();
+     
 
     }
 
@@ -212,3 +215,17 @@ resetBtn.addEventListener('click',()=>{
 })
 
 
+document.addEventListener('DOMContentLoaded', function() {
+    let today = new Date();
+    let year = today.getFullYear();
+    let month = today.getMonth() + 1;
+    let day = today.getDate();
+
+    var firstDayOfMonth = year + '-' + (month < 10 ? '0' : '') + month + '-01';
+
+    if (today.toISOString().split('T')[0] > firstDayOfMonth) {
+      document.getElementById('dateInput').setAttribute('min', firstDayOfMonth);
+    }
+
+    document.getElementById('dateInput').setAttribute('max', today.toISOString().split('T')[0]);
+  });
