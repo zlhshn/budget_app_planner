@@ -1,4 +1,8 @@
-# budget_app_planner
+  
+<div align="center" >
+ <img src='./img/budget.jpg'width='200px' ></div>
+  <br>
+  
 ## Description
 This project aims to create an app where users can plan their budgets.
 
