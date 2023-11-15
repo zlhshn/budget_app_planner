@@ -181,6 +181,8 @@ tbody.addEventListener('click',(e)=>{
        dateInput.value = formattedDate;
         expenseInput.value = expenseEdit.expense;
         amountInput.value = expenseEdit.amount;
+
+        e.target.parentElement.parentElement.remove();
     
         expenseList = expenseList.filter((x) => x.id != id);
         localStorage.setItem("expenses", JSON.stringify(expenseList));
